@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 const Input = styled.input` 
-    border: 1px solid #2ECC71;
-    border-radius: 4px;
+    border-bottom: 1px solid #4B6621;;
     width: 400px;
     height: 32px;
-    background: #F5F5F5;
     margin-bottom: 15px;
     :focus-visible {
         outline: #8DF2B8 auto 1px;
@@ -21,7 +19,7 @@ const Label = styled.p`
     font-size: 16px;
     line-height: 19px;
 
-    color: #2ECC71;
+    color: #4B6621;
     margin-bottom: 10px;    
 `;
 

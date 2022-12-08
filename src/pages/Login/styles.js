@@ -1,15 +1,13 @@
 import styled from "styled-components";
-import image from "../../image/background.png"
+import image from "../../image/nrd-D6Tu_L3chLE-unsplash.jpg"
 
 const Container = styled.div`
     background-image: url(${image});  
+    background-size: 100%;
+    background-repeat: no-repeat;
     position: relative;
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
 `;
 
 const Card = styled.div`
@@ -20,17 +18,13 @@ const Card = styled.div`
     padding: 40px;
     gap: 20px;
 
-    position: relative;
-    width: 480px;
-    height: 411px;
-
-    background: #F5F5F5;
-    /* Drop Shadow
-
-    shadow
-    */
+    position: absolute;
+    width: 600px;
+    height: 100vh;
+    left: 50%;
+    top: 0px;
+    background: #FFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
 `;
 
 const CardLink = styled.div`
@@ -50,11 +44,7 @@ const Link = styled.a`
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
-    /* identical to box height */
-
-
-    color: #2ECC71;
-`;
+    color: #4B6621;`;
 
 export {
     Container,

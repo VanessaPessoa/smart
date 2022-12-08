@@ -9,7 +9,7 @@ const ButtonPrimary = styled.button`
     gap: 16px;
     width: 406px;
     height: 50px;
-    background: linear-gradient(180deg, #8DF2B8 0%, #2ECC71 100%);
+    background: linear-gradient(180deg, #96CF74 0%, #C0F59F 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
     margin-bottom: 20px;
@@ -44,8 +44,7 @@ const TitleSecundary = styled.span`
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 0.003em;
-    color: #4BD887;
-`;
+    color: #4B6621;`;
 
 
 export {

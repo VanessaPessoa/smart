@@ -1,6 +1,6 @@
 import React from "react"
 import { TextField, Button } from "../../components"
-import { Card, CardLink, Container, Link } from "./styles"
+import { Card, CardLink, Container, Link, Logo } from "./styles"
 import { useForm } from "react-hook-form";
 
 
@@ -20,6 +20,7 @@ export default function Login() {
                         msgError={"Campo obrigatório"}
                         required
                         type="email"
+                        placeholder="exemplo@gmail.com"
                     />
 
                     <TextField
@@ -30,6 +31,7 @@ export default function Login() {
                         msgError={"Campo obrigatório"}
                         required
                         type="password"
+                        placeholder="Informe sua senha"
                     />
 
                     <CardLink>
