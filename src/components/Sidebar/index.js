@@ -5,7 +5,7 @@ import { Menu } from "./Menu";
 
 const drawerWidth = 280;
 
-export function Sidebar({ children, windows }) {
+export default function Sidebar({ children, windows }) {
     const container = windows !== undefined ? () => window().document.body : undefined;
 
     const [mobileOpen, setMobileOpen] = useState(false);

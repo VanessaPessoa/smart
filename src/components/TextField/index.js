@@ -1,12 +1,20 @@
-import { MessageError, Input, Label } from "./styles"
+import { TextField } from "@mui/material"
+import { useStyles } from "./styles"
 
-export function TextField({register, name, required, errors, msgError, type, label}){
-    return(
-        <>
-            <Label> {label} </Label>
-            <Input {...register(name, { required })} type={type} />
-            {errors[name] && <MessageError> {msgError} </MessageError>}
+export default function Input({ register, name, required, errors, msgError, type, label }) {
+    const classes = useStyles();
+    return (
+        <div className={classes.box}>
+            <TextField
+                {...register(name, { required })} 
+                type={type} 
+                id="outlined-required"
+                label={label}
+                className={classes.input}
+                multiline
+            />
+            {errors[name] && <span className={classes.messageError}> {msgError} </span>}
 
-        </>
+        </div>
     )
 }

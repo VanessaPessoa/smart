@@ -1,39 +1,82 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { Box, Grid, Skeleton } from "@mui/material";
-import { Pagination } from "@mui/lab";
-import { getProducts } from "../../service"
-import { useStyles } from "./styles";
-import { Sidebar, ErrorFound} from "../../components";
+import {
+    Box,
+    Pagination
+} from "@mui/material";
+import {
+    Sidebar,
+    ErrorFound, 
+    ListLoadingScreen,
+    ProductItem
+} from "../../components";
 
+import { getProducts } from "../../service"
+import AddNewProduct from "./addNewProduct";
+import { useStyles } from "./styles";
 export default function ProductList() {
     const classes = useStyles();
-
     const [page, setPage] = useState(1);
-    const [elementsPerPage, setElementsPerPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(0);
+    const [contentPage, setContentPage] = useState([]);
 
-    const { isLoading, isError, error, data} = useQuery('get-products', getProducts)
+    const { isLoading, isError, error } = useQuery({
+        queryKey: ['products', page],
+        queryFn: () => getProducts(page),
+        onSuccess: (data) => {
+            const result = data?.data;
+            setContentPage(result?.content);
+            setTotalPages(result?.totalPage);
+        },
+        keepPreviousData: true
+    });
 
-    console.log(error)
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
 
-    if (!isLoading) {
+    if (isLoading) {
         return (
-            <div> carregando </div>
+            <ListLoadingScreen />
         )
     }
 
-    // if(isError){
-    //     const status = error.response.status;
-    //     const message = error.response.statusText;
-    //     return(
-    //         <ErrorFound status={status} message={message} />
-    //     )
-    // }
+    if (isError) {
+        const status = error.response?.status;
+        const message = error.response?.statusText;
+        return (
+            <ErrorFound status={status} message={message} />
+        )
+    }
 
     return (
         <Sidebar>
             <Box p="5">
-                <Pagination />
+                <AddNewProduct />
+                <Pagination
+                    className={classes.positionCenter}
+                    page={page}
+                    count={totalPages}
+                    onChange={handleChange} />
+
+                <div className={classes.productList}>
+                    {contentPage.length > 0 && contentPage.map(item =>
+                        <ProductItem 
+                            key={item.id}
+                            imgUrl={item.imagem}
+                            title={item.nome}
+                            code={item.codigoProduto} 
+                            price={item.precoAtual}
+                        />  
+                    )}
+                </div>
+                <Pagination
+                    className={classes.positionCenter}
+                    page={page}
+                    count={totalPages}
+                    onChange={handleChange}
+                />
+
             </Box>
         </Sidebar>
     )

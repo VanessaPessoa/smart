@@ -1,25 +1,25 @@
 import {
-    ButtonPrimary,
-    TitlePrimary,
-    ButtonSecundary,
-    TitleSecundary
+    useStyles
 } from "./styles"
 
-export function Button({ title, type, onClick, buttonStyle }) {
-    if (buttonStyle === "primary") {
-        return (
-            <ButtonPrimary type={type} onClick={onClick}>
-                <TitlePrimary> {title} </TitlePrimary>
-            </ButtonPrimary>
-        )
-    }
+import { Button } from "@mui/material";
+import { clsx } from 'clsx';
 
-    if (buttonStyle === "secundary") {
-        return (
-            <ButtonSecundary type={type} onClick={onClick}>
-                <TitleSecundary> {title} </TitleSecundary>
-            </ButtonSecundary>
-        )
-    }
+export default function Buttons({ title, type, onClick, variant, icon }) {
+    const classes = useStyles();
+    return (
+        <Button 
+            type={type}
+            onClick={onClick}
+            startIcon={icon}
+            variant={variant}
+        >
+            <p className={clsx(
+                classes.title
+            )}>
+                {title}
+            </p>
+        </Button>
+    );
 
 }
