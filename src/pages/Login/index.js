@@ -1,6 +1,6 @@
 import React from "react"
 import { TextField, Button } from "../../components"
-import { Card, CardLink, Container, Link, Logo } from "./styles"
+import { Card, CardLink, Container, Redirect } from "./styles"
 import { useForm } from "react-hook-form";
 
 
@@ -35,13 +35,13 @@ export default function Login() {
                     />
 
                     <CardLink>
-                        <Link>Recuperar Senha</Link>
-                        <Link>Continuar sem login</Link>
+                        <Redirect href="/"> Recuperar Senha </Redirect>
+                        <Redirect href="/"> Continuar sem login </Redirect>
 
                     </CardLink>
 
                     <Button type="submit" title="Entrar" buttonStyle="primary" />
-                    <Button  title="Cadastrar" buttonStyle="secundary" />
+                    {/* <Button  title="Cadastrar" buttonStyle="secundary" /> */}
 
                 </form>
             </Card>

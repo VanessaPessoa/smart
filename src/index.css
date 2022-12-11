@@ -50,3 +50,10 @@ button, input{
 	border: none;
 	background-color: transparent;
 }
+
+a, 
+a:hover, 
+a:active, 
+a:link{
+	text-decoration: none
+}

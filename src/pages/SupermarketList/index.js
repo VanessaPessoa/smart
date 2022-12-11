@@ -1,9 +1,10 @@
 import React from "react"
+import { Sidebar } from "../../components";
 
 export default function SupermarketList(){
     return(
-        <div>
-            Lista de mercados
-        </div>
+        <Sidebar>
+            Lista de supermercado
+        </Sidebar>
     )
 }
