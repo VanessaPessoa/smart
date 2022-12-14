@@ -6,11 +6,12 @@ export default function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" index element={<Page.SupermarketList />} />
-                <Route path="/products" index element={<Page.ProductList />} />
-                <Route path="/profile" index element={<Page.UserProfile />} />
-                <Route path="/login" element={<Page.Login />} />
-                <Route path="/register" element={<Page.Register />} />
-                <Route path="/logout" element={<Page.Register />} />
+                <Route path="/add-supermarket"  element={<Page.AddSupermarket />} />
+                <Route path="/add-product"  element={<Page.AddProduct />} />
+                <Route path="/add-product/city=:idCity/supermarket=:idSupermarket" element={Page.AddProduct} />
+                <Route path="/products"  element={<Page.ProductList />} />
+                <Route path="/product=:id/supermarket=:idMercado" element={<Page.ProductSection />} />
+                <Route path="/supermarket=:idMercado/city=:cidade/uf=:uf" element={<Page.SupermarketSection />} />
                 <Route path="*" element={<Page.ErrorFound status={404} message="page not found" />} />
             </Routes>
         </BrowserRouter>

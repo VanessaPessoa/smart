@@ -1,16 +1,17 @@
 import SupermarketList from "./SupermarketList";
-import Login from "./Login";
-import Register from "./Register";
 import ProductList from "./ProductList";
-import UserProfile from './UserProfile';
 import ProductSection from "./ProductSection";
 import ErrorFound from "../components/ErrorFound";
+import SupermarketSection from "./SupermarketSection";
+import AddSupermarket from "./AddSupermarket";
+import AddProduct from "./AddProduct"
+
 export {
-    Login,
-    Register,
+    AddSupermarket,
     SupermarketList,
+    SupermarketSection,
     ProductList,
     ProductSection,
-    UserProfile,
-    ErrorFound
+    ErrorFound,
+    AddProduct
 }

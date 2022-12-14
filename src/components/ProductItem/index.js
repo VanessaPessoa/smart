@@ -2,9 +2,10 @@ import { Card, CardContent, Button, Chip } from "@mui/material"
 import Image from 'mui-image';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useStyles } from "./style"
+import { LocationOn } from "@mui/icons-material";
 
 
-export default function ProductItem({ title, imgUrl, price }) {
+export default function ProductItem({ title, imgUrl, price, onClick, address, label}) {
     const classes = useStyles();
 
     return (
@@ -19,13 +20,24 @@ export default function ProductItem({ title, imgUrl, price }) {
                     distance="10px"
                 />
                 <p className={classes.title}> {title} </p>
-                {!price && <Chip
+                
+                {price && <Chip
                     className={classes.chip}
                     icon={<AttachMoneyIcon />}
-                    label={20}/>
+                    label={price}/>
                 }
-                <Button size="small" variant="text">
-                    Ver produto
+
+                {address && 
+                    <span className={classes.location}> 
+                        <LocationOn />  {address} 
+                     </span>
+                }
+
+                <Button 
+                    size="small" 
+                    variant="text"
+                    onClick={onClick}>
+                    {label}
                 </Button>
 
             </CardContent>

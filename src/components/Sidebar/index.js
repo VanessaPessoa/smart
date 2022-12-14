@@ -3,7 +3,7 @@ import { Box, Drawer, Toolbar } from "@mui/material";
 import { Menu } from "./Menu";
 
 
-const drawerWidth = 280;
+const drawerWidth = 240;
 
 export default function Sidebar({ children, windows }) {
     const container = windows !== undefined ? () => window().document.body : undefined;
@@ -49,7 +49,7 @@ export default function Sidebar({ children, windows }) {
             </Box>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+                sx={{ flexGrow: 1, p: 10, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
                 {children}

@@ -1,39 +1,39 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import {
-    Box,
-    Pagination
+    Box
 } from "@mui/material";
 import {
     Sidebar,
-    ErrorFound, 
+    ErrorFound,
     ListLoadingScreen,
-    ProductItem
+    Status,
+    SearchCity,
+    ProductsList
 } from "../../components";
 
 import { getProducts } from "../../service"
 import AddNewProduct from "./addNewProduct";
 import { useStyles } from "./styles";
+
+
 export default function ProductList() {
     const classes = useStyles();
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [contentPage, setContentPage] = useState([]);
+    const [city, setCity] = useState([]);
 
     const { isLoading, isError, error } = useQuery({
-        queryKey: ['products', page],
-        queryFn: () => getProducts(page),
+        queryKey: ['products', page, city?.id],
+        queryFn: () => getProducts(page, city?.id),
         onSuccess: (data) => {
             const result = data?.data;
             setContentPage(result?.content);
             setTotalPages(result?.totalPage);
         },
-        keepPreviousData: true
+        keepPreviousData: true,
     });
-
-    const handleChange = (event, value) => {
-        setPage(value);
-    };
 
     if (isLoading) {
         return (
@@ -52,30 +52,21 @@ export default function ProductList() {
     return (
         <Sidebar>
             <Box p="5">
-                <AddNewProduct />
-                <Pagination
-                    className={classes.positionCenter}
-                    page={page}
-                    count={totalPages}
-                    onChange={handleChange} />
-
-                <div className={classes.productList}>
-                    {contentPage.length > 0 && contentPage.map(item =>
-                        <ProductItem 
-                            key={item.id}
-                            imgUrl={item.imagem}
-                            title={item.nome}
-                            code={item.codigoProduto} 
-                            price={item.precoAtual}
-                        />  
-                    )}
+                <div className={classes.buttons}>
+                    <AddNewProduct />
+                    <SearchCity
+                        label="Cidade"
+                        setCity={setCity}
+                    />
                 </div>
-                <Pagination
-                    className={classes.positionCenter}
-                    page={page}
-                    count={totalPages}
-                    onChange={handleChange}
-                />
+                {city && contentPage?.length > 0 ? (
+                    <ProductsList page={page} setPage={setPage} contentPage={contentPage} totalPages={totalPages} />
+                ) :
+                    <>
+                        {city ? <Status message="Nenhum produto foi encontrado"/> :  <Status message="Informe a cidade" />}
+                    </>
+
+                }
 
             </Box>
         </Sidebar>

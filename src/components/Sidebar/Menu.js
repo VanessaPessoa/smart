@@ -1,16 +1,25 @@
 
-import {useNavigate} from 'react-router-dom';
-import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from "@mui/material"
+import { useNavigate } from 'react-router-dom';
+import {
+    Divider,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Toolbar
+} from "@mui/material"
 import { menuNotLoggedIn } from "../../data/menu"
 
 
 export function Menu({ props }) {
     const navigate = useNavigate();
-    const menu = menuNotLoggedIn; //adiconar logica de login aq
+    const menu = menuNotLoggedIn;
+
     const redirect = (url) => {
-        console.log(url)
-       navigate(url)
+        navigate(url)
     }
+
     return (
         <>
             <Toolbar />

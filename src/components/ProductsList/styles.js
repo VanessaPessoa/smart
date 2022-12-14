@@ -23,8 +23,7 @@ export const useStyles = makeStyles({
     },
     box: {
         "& .MuiPaper-root":{
-            width: 900,
-            height: 500
+            width: 600
         },
         '@media (max-width: 600px)': {
             "& .MuiPaper-root":{
@@ -41,11 +40,6 @@ export const useStyles = makeStyles({
         position: "relative",
         width: "100%",
         height: "auto",
-        display: "flex",
-        justifyContent: "space-between",
-        flexWrap: "wrap"
-    },
-    search:{
         display: "flex",
         justifyContent: "space-between",
         flexWrap: "wrap"

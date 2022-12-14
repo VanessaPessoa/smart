@@ -7,16 +7,24 @@ export const useStyles = makeStyles({
         width: "30%",
         marginBottom: 10
     },
-    content:{
+    content: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
     },
-    title:{
+    title: {
         fontSize: "16px",
         fontWeight: 600,
         margin: "16px 0",
         textTransform: "uppercase"
+    },
+    location: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 10,
+        width: "80%",
+        wordBreak: "break-all",
     }
 });
